@@ -116,7 +116,8 @@ echo -e "${yellow}======================="
 echo -e "${yellow}========================"
 echo -e "${red} Sedang Menginstall Tools!!!"
 echo -e "${yellow}========================"
-    git clone https://github.com/Reyvknd/Spam-Pairing-Code.git
+    git clone
+    https://github.com/Reyvknd/Spam-Pairing-Code.git
     cd Spam-Pairing-Code
     yarn install
     npm start
