@@ -68,10 +68,11 @@ case $kuy in
 echo -e "${yellow}======================="
 echo -e "${red} Sedang Menginstall Tools!!!"
 echo -e "${yellow}========================"
-    git clone https://github.com/Sxp-ID/Brutal-W4
-    cd Brutal-W4
-    make install
-    ./main
+    git clone https://github.com/HengkerV78/SpamV80.git
+    cd SpamV80
+    npm install
+    yarn install
+    npm start
     ;;
   2)
     clear
@@ -127,10 +128,11 @@ echo -e "${yellow}========================"
 echo -e "${yellow}========================"
 echo -e "${red} Sedang Menginstall Tools!!!"
 echo -e "${yellow}========================"
-    git clone https://github.com/Bayu12345677/OTP_TERROR.git
-    cd OTP_TERROR
-    make setup
-    make Run
+    git clone https://github.com/HengkerV78/SpamV78.git
+    cd SpamV78
+    npm install
+    yarn install
+    npm start
     ;;
   7)
     clear
@@ -170,10 +172,13 @@ echo -e "${yellow}========================"
 echo -e "${yellow}========================="
 echo -e "${red} Sedang Menginstall Tools!!!"
 echo -e "${yellow}========================="
-    git clone https://github.com/HunxByts/GhostTrack.git
-    cd GhostTrack
-    pip3 install -r requirements.txt
-    python3 GhostTR.py
+    pip install requests
+    pip install pyfiglet
+    pip install uuid
+    pip install fake-useragent
+    git clone https://github.com/HengkerV78/King-Osint.git 
+    cd King-Osint
+    python main.py
     ;;
   9)
     clear 
