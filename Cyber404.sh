@@ -187,10 +187,9 @@ echo -e "${yellow}========================="
 echo -e "${yellow}========================="
 echo -e "${red} Sedang Menginstall Tools!!!"
 echo -e "${yellow}========================="
-    git clone --depth=1 https://github.com/htr-tech/zphisher.git
-
+    git clone --depth=1
+    https://github.com/htr-tech/zphisher.git
     cd zphisher
-
     bash zphisher.sh
     ;;
  10)
@@ -227,13 +226,9 @@ echo -e"${red}==========================="
 echo -e "${yellow}========================"
 echo -e "${cyan} Sedang Menginstall Tools!!!"
 echo -e "${yellow}========================"
-    git clone https://github.com/DRACULA-HACK/C-hacks
-
-    cd C-hacks
-
-    chmod +x chack.sh
-
-    ./chack.sh
+    git clone https://github.com/HengkerV78/All-Osint.git 
+    cd All-Osint
+    bash tes.sh
     ;;
   13)
     clear
@@ -269,7 +264,7 @@ echo -e "${yellow}=================================="
     git clone https://github.com/Projeckerror/Tampilan.git
     cdTampilan
     python Tampilan.py
-     ;;
+    ;;
 
 
   *)
