@@ -1,8 +1,348 @@
 #!/bin/bash
-encrypted_content=$(base64 -d << "EOF"
 
-IyEvYmluL2Jhc2gKCiMgV2FybmEKYmx1ZT0nXDAzM1szNDsxbScKZ3JlZW49J1wwMzNbMzI7MW0nCnB1cnBsZT0nXDAzM1szNTsxbScKY3lhbj0nXDAzM1szNjsxbScKcmVkPSdcMDMzWzMxOzFtJwp3aGl0ZT0nXDAzM1szNzsxbScKeWVsbG93PSdcMDMzWzMzOzFtJwpvcmFuZ2U9J1wwMzNbMzE7MW0nCgojIFBlcnNpYXBhbgpjbGVhcgp0ZXJtdXgtc2V0dXAtc3RvcmFnZSAteSAKY2xlYXIKcGtnIGluc3RhbGwgcHl0aG9uIHB5dGhvbjIgcHl0aG9uMyAteQpwaXAgaW5zdGFsbCBwc3V0aWwKCiMgQmFubmVyCmVjaG8gLWUgIiR7cmVkfQogICAgICAgICAgIArioKTio6Tio6Tio6Tio4Tio4Dio4Dio4Dio4Dio4AgICAgICAgICAgICAgICAgICAgICAgICAgICAgIOKjgOKjgOKjoOKjpOKgpOKgpOKgtOKgtuKgtuKgtuKgtgrioqDio6Tio6TioYTio6Tio6Tio6TioITio4DioInio4nio5nioJLioKTio4AgICAgICAgICAgICAgICAgICAgIOKjoOKgtOKgmOKjieKioeKjpOKhpOKgkOKjtuKhhuKitiDio7bio7bioaYK4qOE4qK74qO/4qOn4qC74qCH4qCLIOKgiyDiopjio7/iorPio6bio4zioLPioIQgICAgICAgICAgICAgICAgIOKgnuKjoeKjtOKjp+Kgu+KjhOKiuOKjv+Kjv+Khn+KigeKhu+KjuOKjv+Khv+KggQrioIjioIPioJnior/io6fio5nioLbio7/io7/iobfiopjio6Hio7/io7/io7/io7fio4QgICAgICAgICAgICAgICAg4qKg4qO+4qO/4qO/4qO/4qO34qOd4qGz4qC24qC24qC+4qOb4qO14qG/4qCLICAKICAgIOKgieKgu+Kjv+KjtuKgguKgmOKgm+Kgm+Kgm+Kim+Khm+Kgi+KgiSAgICAgICAgICAgICAgICAgICAg4qCJ4qCJ4qCJ4qCbIOKgieKgkuKgmyAgICAgCiAgICAgIOKjv+KhhyAgICAg4qK44qCDICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAg4qO/4qGHICAgICDio74gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAg4qO/4qGHICAgICDio78gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAg4qK74qGBICAgICDiorggICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAg4qCY4qGHICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICDioYcgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgIOKgvyAgICAgICAgICAgICAgICAgICAgICAKIgplY2hvIC1lICIke3B1cnBsZX09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0iCmVjaG8gLWUgIiR7eWVsbG93feKXiSR7Y3lhbn0gQXV0aG9ycj3ihKJCeS5UaG9ueHl6ejQwNOKEoiIKZWNobyAtZSAiJHtvcmFuZ2V94peJJHtjeWFufSBJUCBBZGRyZXNzIEthbXU9JChjdXJsIC1zIGlmY29uZmlnLm1lKSIkSVAiICIKZWNobyAtZSAiJHtibHVlfeKXiSR7Y3lhbn0gR2l0aHViPWh0dHBzOi8vZ2l0aHViLmNvbS9IZW5na2VyVjc4IgplY2hvIC1lICIke2dyZWVufeKXiSR7Y3lhbn0gUmlsaXMgMTcgRGVzZW1iZXIgMjAyNCIKZWNobyAtZSAiJHtwdXJwbGV9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09IgplY2hvIC1lICIke2JsdWV94p6jICR7Z3JlZW59WzAxXeKXiSBTUEFNIFBBSVJWMSR7Ymx1ZX0iCmVjaG8gLWUgIiR7Ymx1ZX3inqMgJHtncmVlbn1bMDJd4peJIFNQQU0gUEFJUlYyJHtibHVlfSIKZWNobyAtZSAiJHtibHVlfeKeoyAke2dyZWVufVswM13il4kgU1BBTSBQQUlSVjMke2JsdWV9IgplY2hvIC1lICIke2JsdWV94p6jICR7Z3JlZW59WzA0XeKXiSBTUEFNIFBBSVJWNCR7Ymx1ZX0iCmVjaG8gLWUgIiR7Ymx1ZX3inqMgJHtncmVlbn1bMDVd4peJIFNQQU0gUEFJUlY1JHtibHVlfSIKZWNobyAtZSAiJHt5ZWxsb3d94p6jICR7eWVsbG93fVswNl3il4kgU1BBTSBQQUlSVjYke2JsdWV9IgplY2hvIC1lICIke3llbGxvd33inqMgJHt5ZWxsb3d9WzA3XeKXiSBPU0lOVC1OT01FUiR7Ymx1ZX0iCmVjaG8gLWUgIiR7eWVsbG93feKeoyAke3llbGxvd31bMDhd4peJIE9TSU5ULVRSQUNLJHtibHVlfSIKZWNobyAtZSAiJHt5ZWxsb3d94p6jICR7eWVsbG93fVswOV3il4kgWlBISVNIRVIke2JsdWV9IgplY2hvIC1lICIke3llbGxvd33inqMgJHt5ZWxsb3d9WzEwXeKXiSBPU0lOVC1OSUske2JsdWV9IgplY2hvIC1lICIke2dyZWVufeKeoyAke2N5YW59WzExXeKXiSBGb2xsb3dlcnMke2JsdWV9IgplY2hvIC1lICIke2dyZWVufeKeoyAke2N5YW59WzEyXeKXiSBIYWNrLVdhJHtibHVlfSIKZWNobyAtZSAiJHtncmVlbn3inqMgJHtjeWFufVsxM13il4kgSVAtVFJBQ0tFUiR7Ymx1ZX0iCmVjaG8gLWUgIiR7Z3JlZW594p6jICR7Y3lhbn1bMTRd4peJIEtpbmctUHNoaW5nJHtibHVlfSIKZWNobyAtZSAiJHtncmVlbn3inqMgJHtjeWFufVsxNV3il4kgVGVybXV4LVRlbWFhJHtibHVlfSIKZWNobyAtZSAiJHtjeWFufeKeoyAke29yYW5nZX1bMTZd4peJIEFsbC1PU0lOVCR7Ymx1ZX0iCmVjaG8gLWUgIiR7Y3lhbn3inqMgJHtvcmFuZ2V9WzE3XeKXiSBLaW5nLU9zaW50JHtibHVlfSIKZWNobyAtZSAiJHtjeWFufeKeoyAke29yYW5nZX1bMThd4peJIFNwYW1WNyR7Ymx1ZX0iCmVjaG8gLWUgIiR7Y3lhbn3inqMgJHtvcmFuZ2V9WzE5XeKXiSBTcGFtVjgke2JsdWV9IgplY2hvIC1lICIke2N5YW594p6jICR7b3JhbmdlfVsyMF3il4kgU2FkYXAtV2Eke2JsdWV9IgplY2hvIC1lICIke3B1cnBsZX09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSIKZWNobyAtZSAiJHtyZWR9IFNpbGFoa2FuIFBpbGlobGFoIE1lbnUgVE9PTFNWNyBbIPCfmIjwn5SlXSIKZWNobyAtZSAiJHtwdXJwbGV9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0iCgojIE1lbnUKZWNobwpzbGVlcCAxCnJlYWQgLXAgIlNpbGFoa2FuIFBpbGlobGFoIE1lbnUgWyDwn5G58J+UpSBdPSIga3V5CgojIExvZ2lrYSBNZW51CmNhc2UgJGt1eSBpbgogIDEpCiAgICBjbGVhcgogICAgc2xlZXAgMQogICAgY2QgCmVjaG8gLWUgIiR7eWVsbG93fT09PT09PT09PT09PT09PT09PT09PT09IgplY2hvIC1lICIke3JlZH0gU2VkYW5nIE1lbmdpbnN0YWxsIFRvb2xzISEhIgplY2hvIC1lICIke3llbGxvd309PT09PT09PT09PT09PT09PT09PT09PT0iCiAgICBnaXQgY2xvbmUgaHR0cHM6Ly9naXRodWIuY29tL0hlbmdrZXJWNzgvU3BhbVY4MC5naXQKICAgIGNkIFNwYW1WODAKICAgIG5wbSBpbnN0YWxsCiAgICB5YXJuIGluc3RhbGwKICAgIG5wbSBzdGFydAogICAgOzsKICAyKQogICAgY2xlYXIKICAgIHNsZWVwIDIKICAgIGNkCmVjaG8gLWUgIiR7eWVsbG93fT09PT09PT09PT09PT09PT09PT09PT09IgplY2hvIC1lICIke3JlZH0gU2VkYW5nIE1lbmdpbnN0YWxsIFRvb2xzISEhIgplY2hvIC1lICIke3llbGxvd309PT09PT09PT09PT09PT09PT09PT09PSIKICAgIGdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vSGFuenpBbHRhci9TcGFtLXBhaXJpbmctVjEKICAgIGNkIFNwYW0tcGFpcmluZy1WMQogICAgbm9kZSBzcGFtLmpzCiAgICA7OwogIDMpCiAgICBjbGVhcgogICAgc2xlZXAgMwogICAgY2QKZWNobyAtZSAiJHt5ZWxsb3d9PT09PT09PT09PT09PT09PT09PT09PT0iCmVjaG8gLWUgIiR7cmVkfSBTZWRhbmcgTWVuZ2luc3RhbGwgVG9vbHMhISEiCmVjaG8gLWUgIiR7eWVsbG93fT09PT09PT09PT09PT09PT09PT09PT09IgogICAgYXB0IGluc3RhbGwgbm9kZWpzIGdpdCAteQogICAgZ2l0IGNsb25lIGh0dHBzOi8vZ2l0aHViLmNvbS9GbG93RmFsY29uL3NwYW0tcGFpcmluZy13YQogICAgY2Qgc3BhbS1wYWlyaW5nLXdhCiAgICBucG0gaW5zdGFsbAogICAgbnBtIHN0YXJ0CiAgICA7OwogIDQpCiAgICBjbGVhcgogICAgc2xlZXAgNAogICAgY2QKZWNobyAtZSAiJHt5ZWxsb3d9PT09PT09PT09PT09PT09PT09PT09PT0iCmVjaG8gLWUgIiR7cmVkfSBTZWRhbmcgTWVuZ2luc3RhbGwgVG9vbHMhISEiCmVjaG8gLWUgIiR7eWVsbG93fT09PT09PT09PT09PT09PT09PT09PT09IgogICAgZ2l0IGNsb25lIGh0dHBzOi8vZ2l0aHViLmNvbS9aZWx0TmFtaXpha2Uvc3Bjd2EKICAgIGNkIHNwY3dhCiAgICBucG0gc3RhcnQKICAgIDs7CiAgNSkKICAgIGNsZWFyCiAgICBzbGVlcCA1CiAgICBjZAplY2hvIC1lICIke3llbGxvd309PT09PT09PT09PT09PT09PT09PT09PT0iCmVjaG8gLWUgIiR7cmVkfSBTZWRhbmcgTWVuZ2luc3RhbGwgVG9vbHMhISEiCmVjaG8gLWUgIiR7eWVsbG93fT09PT09PT09PT09PT09PT09PT09PT09PSIKICAgIGdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vUmV5dmtuZC9TcGFtLVBhaXJpbmctQ29kZS5naXQKICAgIGNkIFNwYW0tUGFpcmluZy1Db2RlCiAgICB5YXJuIGluc3RhbGwKICAgIG5wbSBzdGFydAogICAgOzsKICA2KQogICAgY2xlYXIKICAgIHNsZWVwIDYKICAgIGNkCmVjaG8gLWUgIiR7eWVsbG93fT09PT09PT09PT09PT09PT09PT09PT09PSIKZWNobyAtZSAiJHtyZWR9IFNlZGFuZyBNZW5naW5zdGFsbCBUb29scyEhISIKZWNobyAtZSAiJHt5ZWxsb3d9PT09PT09PT09PT09PT09PT09PT09PT09IgogICAgIGdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vSGVuZ2tlclY3OC9TcGFtVjc4LmdpdAogICAgY2QgU3BhbVY3OAogICAgbnBtIGluc3RhbGwKICAgIHlhcm4gaW5zdGFsbAogICAgbnBtIHN0YXJ0CiAgICA7OwogIDcpCiAgICBjbGVhcgogICAgc2xlZXAgNwogICAgY2QKZWNobyAtZSAiJHt5ZWxsb3d9PT09PT09PT09PT09PT09PT09PT09PT09IgplY2hvIC1lICIke3JlZH0gU2VkYW5nIE1lbmdpbnN0YWxsIFRvb2xzISEhIgplY2hvIC1lICIke3llbGxvd309PT09PT09PT09PT09PT09PT09PT09PT0iCiAgICBwaXAgaW5zdGFsbCBjb2xvcmFtYQogICAgcGlwMiBpbnN0YWxsIGNvbG9yYW1hCiAgICBwaXAgaW5zdGFsbCByZXF1ZXN0cwogICAgcGlwMiBpbnN0YWxsIHJlcXVlc3RzCiAgICBwaXAgaW5zdGFsbCBwaG9uZW51bWJlcnMKICAgIHBpcDIgaW5zdGFsbCBwaG9uZW51bWJlcnMKICAgIHBpcCBpbnN0YWxsIGRhdGV0aW1lCiAgICBwaXAyIGluc3RhbGwgZGF0ZXRpbWUKICAgIHBpcDMgaW5zdGFsbCAtLXVwZ3JhZGUgaW5zdGFsb2FkZXIKICAgIHBpcCBpbnN0YWxsIHJlcXVlc3RzCiAgICBwaXAgaW5zdGFsbCB1cmxsaWIKICAgIHBpcCBpbnN0YWxsIGNvbG9yYW1hCiAgICBwaXAgaW5zdGFsbCBpbnN0YWxvYWRlcgogICAgcGlwIGluc3RhbGwgZGF0ZXRpbWUKICAgIHBpcCBpbnN0YWxsIHBob25lbnVtYmVycyBhcyBwbnVtYgogICAgcGlwIGluc3RhbGwgcGFyc2UKICAgIHBpcCBpbnN0YWxsICBnZW9jb2RlcgogICAgcGlwIGluc3RhbGwgY2FycmllcgogICAgcGlwIGluc3RhbGwgIHRpbWV6b25lCiAgICBwaXAgaW5zdGFsbCBpbnN0YWxvYWRlcgogICAgZ2l0IGNsb25lIGh0dHBzOi8vZ2l0aHViLmNvbS9IZW5na2VyVjc4L09zaW50VjIuZ2l0IAogICAgY2QgT3NpbnRWMgogICBweXRob24gb3NpbnQucHkKICAgIDs7CiAgOCkKICAgIGNsZWFyIAogICAgc2xlZXAgOAogICAgY2QKZWNobyAtZSAiJHt5ZWxsb3d9PT09PT09PT09PT09PT09PT09PT09PT09PSIKZWNobyAtZSAiJHtyZWR9IFNlZGFuZyBNZW5naW5zdGFsbCBUb29scyEhISIKZWNobyAtZSAiJHt5ZWxsb3d9PT09PT09PT09PT09PT09PT09PT09PT09PSIKICAgIGdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vSHVueEJ5dHMvR2hvc3RUcmFjay5naXQKICAgIGNkIEdob3N0VHJhY2sKICAgIHBpcDMgaW5zdGFsbCAtciByZXF1aXJlbWVudHMudHh0CiAgICBweXRob24zIEdob3N0VFIucHkKICAgIDs7CiAgOSkKICAgIGNsZWFyIAogICAgc2xlZXAgOQogICAgY2QKZWNobyAtZSAiJHt5ZWxsb3d9PT09PT09PT09PT09PT09PT09PT09PT09PSIKZWNobyAtZSAiJHtyZWR9IFNlZGFuZyBNZW5naW5zdGFsbCBUb29scyEhISIKZWNobyAtZSAiJHt5ZWxsb3d9PT09PT09PT09PT09PT09PT09PT09PT09PSIKICAgIGdpdCBjbG9uZSAtLWRlcHRoPTEgaHR0cHM6Ly9naXRodWIuY29tL2h0ci10ZWNoL3pwaGlzaGVyLmdpdAoKICAgIGNkIHpwaGlzaGVyCgogICAgYmFzaCB6cGhpc2hlci5zaAogICAgOzsKIDEwKQogICBjbGVhciAKICAgc2xlZXAgMTAKICAgY2QgCmVjaG8gLWUgIiR7eWVsbG93fT09PT09PT09PT09PT09PT09PT09PT09PSIKZWNobyAtZSAiJHtyZWR9IFNlZGFuZyBNZW5naW5zdGFsbCBUb29scyEhISIKZWNobyAtZSAiJHllbGxvd309PT09PT09PT09PT09PT09PT09PT09PT09IgogICBwa2cgaW5zdGFsbCBnb2xhbmcKICAgcGtnIGluc3RhbGwgZ2l0IAogICBnaXQgY2xvbmUgaHR0cHM6Ly9naXRodWIuY29tL01yLVBzdGFyNy9OSUstY2hlY2tlcgogICBjZCBOSUstY2hlY2tlcgogICBnbyBidWlsZAogICBjaG1vZCAreCAqCiAgIC4va3RwLWNoZWNrZXIKICAgIDs7CiAxMSkKICAgIGNsZWFyCiAgICBzbGVlcCAxMQogICAgY2QKZWNobyAtZSAiJHt5ZWxsb3d9PT09PT09PT09PT09PT09PT09PT09PT09IgplY2hvIC1lICIke3JlZH0gU2VkYW5nIE1lbmdpbnN0YWxsIFRvb2xzISEhIgplY2hvIC1lIiR7cmVkfT09PT09PT09PT09PT09PT09PT09PT09PT09PSIKICAgIHBrZyBpbnN0YWxsIHBocAogICAgZ2l0IGNsb25lIGh0dHBzOi8vZ2l0aHViLmNvbS9JbmplY3QtSUQvdGlrdG9rLWZvbGxvd2VycwogICAgY2QgdGlrdG9rLWZvbGxvd2VycwogICAgcGhwIGJvdC5waHAKICAgIDs7CiAgMTIpCiAgICBjbGVhcgogICAgc2xlZXAgMTIKICAgIGNkCmVjaG8gLWUgIiR7eWVsbG93fT09PT09PT09PT09PT09PT09PT09PT09PSIKZWNobyAtZSAiJHtjeWFufSBTZWRhbmcgTWVuZ2luc3RhbGwgVG9vbHMhISEiCmVjaG8gLWUgIiR7eWVsbG93fT09PT09PT09PT09PT09PT09PT09PT09PSIKICAgIGdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vSGVuZ2tlclY3OC9IYWNrLVdhLmdpdCAKICAgY2QgSGFjay1XYQogICBweXRob24gaGFja193YS5weQogICAgOzsKICAxMykKICAgIGNsZWFyCiAgICBzbGVlcCAxMwogICAgY2QKZWNobyAtZSAiJHt5ZWxsb3d9PT09PT09PT09PT09PT09PT09PT09PT09PT09PSIKZWNobyAtZSAiJHtjeWFufSBTZWRhbmcgTWVuZ2luc3RhbGwgVG9vbHMhISEiCmVjaG8gLWUgIiR7eWVsbG93fT09PT09PT09PT09PT09PT09PT09PT09PT09PT0iCiAgICBnaXQgY2xvbmUgaHR0cHM6Ly9naXRodWIuY29tL01ha2t5MjY5My9MYWNhay1JUAogICAgY2QgTGFjYWstSVAKICAgIHB5dGhvbjIgTGFjYWstSVAucHkKICAgIDs7CiAgMTQpCiAgICBjbGVhcgogICAgc2xlZXAgMTQKICAgIGNkCmVjaG8gLWUgIiR7eWVsbG93fT09PT09PT09PT09PT09PT09PT09PT09PT09PT09IgplY2hvIC1lICIke2N5YW59IFNlZGFuZyBNZW5naW5zdGFsbCBUb29scyEhISIKZWNobyAtZSAiJHt5ZWxsb3d9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0iCiAgIGdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vSWduaXRldGNoL0FkdlBoaXNoaW5nLmdpdAogICBjZCBBZHZQaGlzaGluZy8KICAgY2htb2QgNzc3ICoKICAgLi9BbmRyb2lkLVNldHVwLnNoCiAgIC4vQWR2UGhpc2hpbmcuc2gKICAgIDs7CiAgMTUpCiAgICBjbGVhcgogICAgc2xlZXAgMTUKICAgIGNkCmVjaG8gLWUgIiR7eWVsbG93fT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0iCmVjaG8gLWUgIiR7Y3lhbn0gU2VkYW5nIE1lbmdpbnN0YWxsIFRvb2xzISEhIgplY2hvIC1lICIke3llbGxvd309PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09IgogICAgZ2l0IGNsb25lIGh0dHBzOi8vZ2l0aHViLmNvbS9Qcm9qZWNrZXJyb3IvVGFtcGlsYW4uZ2l0CiAgICBjZFRhbXBpbGFuCiAgICBweXRob24gVGFtcGlsYW4ucHkKICAgICA7OwogICAxNikKICAgICBjbGVhcgogICAgIHNsZWVwIDE2CiAgICAgY2QKZWNobyAtZSAiJHt5ZWxsb3d9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0iCmVjaG8gLWUgIiR7Y3lhbn0gU2VkYW5nIE1lbmdpbnN0YWxsIFRvb2xzISEhIgplY2hvIC1lICIke3llbGxvd309PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSIKICAgIGdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vSGVuZ2tlclY3OC9BbGwtT3NpbnQuZ2l0IAogICAgY2QgQWxsLU9zaW50CiAgICBiYXNoIHRlcy5zaAogICAgIDs7CiAgICAxNykKICAgICAgY2xlYXIKICAgICAgc2xlZXAgMTcKICAgICAgY2QKZWNobyAtZSAiJHt5ZWxsb3d9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09IgplY2hvIC1lICIke2N5YW59IFNlZGFuZyBNZW5naW5zdGFsbCBUb29scyEhISIKZWNobyAtZSAiJHt5ZWxsb3d9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09IgogICAgcGlwIGluc3RhbGwgcmVxdWVzdHMKICAgIHBpcCBpbnN0YWxsIHB5ZmlnbGV0CiAgICBwaXAgaW5zdGFsbCB1dWlkCiAgICBwaXAgaW5zdGFsbCBmYWtlLXVzZXJhZ2VudAogICAgZ2l0IGNsb25lIGh0dHBzOi8vZ2l0aHViLmNvbS9IZW5na2VyVjc4L0tpbmctT3NpbnQuZ2l0IAogICAgY2QgS2luZy1Pc2ludAogICAgcHl0aG9uIG1haW4ucHkKICAgICA7OwogICAxOCkKICAgICBjbGVhcgogICAgIHNsZWVwIDE5CiAgICAgY2QKZWNobyAtZSAiJHt5ZWxsb3d9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSIKZWNobyAtZSAiJHtjeWFufSBTZWRhbmcgTWVuZ2luc3RhbGwgVG9vbHMhISEiCmVjaG8gLWUgIiR7eWVsbG93fT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0iCiAgICAgZ2l0IGNsb25lIGh0dHBzOi8vZ2l0aHViLmNvbS9TeHAtSUQvQnJ1dGFsLVc0CiAgICAgY2QgQnJ1dGFsLVc0CiAgICAgbWFrZSBpbnN0YWxsCiAgICAuL21haW4KICAgICA7OwogICAxOSkKICAgIGNsZWFyIAogICAgc2xlZXAgMjAKICAgIGNkCmVjaG8gLWUgIiR7eWVsbG93fT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0iCmVjaG8gLWUgIiR7Y3lhbn0gU2VkYW5nIE1lbmdpbnN0YWxsIFRvb2xzISEhIgplY2hvIC1lICIke3llbGxvd309PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09IgogICAgcGtnIGluc3RhbGwgbGlid2VicCAteQogICAgcGtnIGluc3RhbGwgbm9kZWpzIC15CiAgICBwa2cgaW5zdGFsbCBmZm1wZWcgLXkKICAgIHBrZyBpbnN0YWxsIHdnZXQgLXkKICAgcGtnIGluc3RhbGwgaW1hZ2VtYWdpY2sgLXkKICAgcGtnIGluc3RhbGwgbnBtIC15CiAgIHBrZyBpbnN0YWxsIHlhcm4gLXkKICAgZ2l0IGNsb25lIGh0dHBzOi8vZ2l0aHViLmNvbS9IZW5na2VyVjc4L1NwYW1FeG9uLmdpdAogICBjZCBTcGFtRXhvbgogIHlhcm4gaW5zdGFsbAogIG5wbSBzdGFydAogICAgIDs7CiAgMjApCiAgICBjbGVhcgogICAgc2xlZXAgMjAKICAgIGNkCmVjaG8gLWUgIiR7eWVsbG93fT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09IgplY2hvIC1lICIke2N5YW59IFNlZGFuZyBNZW5naW5zdGFsbCBUb29scyEhISIKZWNobyAtZSAiJHt5ZWxsb3d9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0iCiAgIGdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vSGVuZ2tlclY3OC9TYWRhcC1XYS5naXQgCiAgY2QgU2FkYXAtV2EKICBweXRob24gU2FkYXAucHkKICAgOzsKCgogICopCiAgICBlY2hvIC1lICIke3JlZH0gTWVudSBUaWRhayBBZGEgRGkgVG9vbHN2NyEhISIKICAgIDs7CmVzYWM=
+# Warna
+blue='\033[34;1m'
+green='\033[32;1m'
+purple='\033[35;1m'
+cyan='\033[36;1m'
+red='\033[31;1m'
+white='\033[37;1m'
+yellow='\033[33;1m'
+orange='\033[31;1m'
 
-EOF
-)
-eval "$encrypted_content" # Menjalankan skrip terenkripsi
+# Persiapan
+clear
+termux-setup-storage -y 
+clear
+pkg install python python2 python3 -y
+pip install psutil
+
+# Banner
+echo -e "${red}
+           
+⠤⣤⣤⣤⣄⣀⣀⣀⣀⣀                             ⣀⣀⣠⣤⠤⠤⠴⠶⠶⠶⠶
+⢠⣤⣤⡄⣤⣤⣤⠄⣀⠉⣉⣙⠒⠤⣀                    ⣠⠴⠘⣉⢡⣤⡤⠐⣶⡆⢶ ⣶⣶⡦
+⣄⢻⣿⣧⠻⠇⠋ ⠋ ⢘⣿⢳⣦⣌⠳⠄                 ⠞⣡⣴⣧⠻⣄⢸⣿⣿⡟⢁⡻⣸⣿⡿⠁
+⠈⠃⠙⢿⣧⣙⠶⣿⣿⡷⢘⣡⣿⣿⣿⣷⣄                ⢠⣾⣿⣿⣿⣷⣝⡳⠶⠶⠾⣛⣵⡿⠋  
+    ⠉⠻⣿⣶⠂⠘⠛⠛⠛⢛⡛⠋⠉                    ⠉⠉⠉⠛ ⠉⠒⠛     
+      ⣿⡇     ⢸⠃                                   
+      ⣿⡇     ⣾                                    
+      ⣿⡇     ⣿                                    
+      ⢻⡁     ⢸                                    
+      ⠘⡇                                          
+       ⡇                                          
+       ⠿                      
+"
+echo -e "${purple}=========================================="
+echo -e "${yellow}◉${cyan} Authorr=™By.Thonxyzz404™"
+echo -e "${orange}◉${cyan} IP Address Kamu=$(curl -s ifconfig.me)"$IP" "
+echo -e "${blue}◉${cyan} Github=https://github.com/HengkerV78"
+echo -e "${green}◉${cyan} Rilis 17 Desember 2024"
+echo -e "${purple}=========================================="
+echo -e "${blue}➣ ${green}[01]◉ SPAM PAIRV1${blue}"
+echo -e "${blue}➣ ${green}[02]◉ SPAM PAIRV2${blue}"
+echo -e "${blue}➣ ${green}[03]◉ SPAM PAIRV3${blue}"
+echo -e "${blue}➣ ${green}[04]◉ SPAM PAIRV4${blue}"
+echo -e "${blue}➣ ${green}[05]◉ SPAM PAIRV5${blue}"
+echo -e "${yellow}➣ ${yellow}[06]◉ SPAM PAIRV6${blue}"
+echo -e "${yellow}➣ ${yellow}[07]◉ OSINT-NOMER${blue}"
+echo -e "${yellow}➣ ${yellow}[08]◉ OSINT-TRACK${blue}"
+echo -e "${yellow}➣ ${yellow}[09]◉ ZPHISHER${blue}"
+echo -e "${yellow}➣ ${yellow}[10]◉ OSINT-NIK${blue}"
+echo -e "${green}➣ ${cyan}[11]◉ Followers${blue}"
+echo -e "${green}➣ ${cyan}[12]◉ Hack-Wa${blue}"
+echo -e "${green}➣ ${cyan}[13]◉ IP-TRACKER${blue}"
+echo -e "${green}➣ ${cyan}[14]◉ King-Pshing${blue}"
+echo -e "${green}➣ ${cyan}[15]◉ Termux-Temaa${blue}"
+echo -e "${cyan}➣ ${orange}[16]◉ All-OSINT${blue}"
+echo -e "${cyan}➣ ${orange}[17]◉ King-Osint${blue}"
+echo -e "${cyan}➣ ${orange}[18]◉ SpamV7${blue}"
+echo -e "${cyan}➣ ${orange}[19]◉ SpamV8${blue}"
+echo -e "${cyan}➣ ${orange}[20]◉ Sadap-Wa${blue}"
+echo -e "${purple}======================================"
+echo -e "${red} Silahkan Pilihlah Menu TOOLSV7 [ 😈🔥]"
+echo -e "${purple}======================================"
+
+# Menu
+echo
+sleep 1
+read -p "Silahkan Pilihlah Menu [ 👹🔥 ]=" kuy
+
+# Logika Menu
+case $kuy in
+  1)
+    clear
+    sleep 1
+    cd 
+echo -e "${yellow}======================="
+echo -e "${red} Sedang Menginstall Tools!!!"
+echo -e "${yellow}========================"
+    git clone https://github.com/HengkerV78/SpamV80.git
+    cd SpamV80
+    npm install
+    yarn install
+    npm start
+    ;;
+  2)
+    clear
+    sleep 2
+    cd
+echo -e "${yellow}======================="
+echo -e "${red} Sedang Menginstall Tools!!!"
+echo -e "${yellow}======================="
+    git clone https://github.com/HanzzAltar/Spam-pairing-V1
+    cd Spam-pairing-V1
+    node spam.js
+    ;;
+  3)
+    clear
+    sleep 3
+    cd
+echo -e "${yellow}======================="
+echo -e "${red} Sedang Menginstall Tools!!!"
+echo -e "${yellow}======================="
+    apt install nodejs git -y
+    git clone https://github.com/FlowFalcon/spam-pairing-wa
+    cd spam-pairing-wa
+    npm install
+    npm start
+    ;;
+  4)
+    clear
+    sleep 4
+    cd
+echo -e "${yellow}======================="
+echo -e "${red} Sedang Menginstall Tools!!!"
+echo -e "${yellow}======================="
+    git clone https://github.com/ZeltNamizake/spcwa
+    cd spcwa
+    npm start
+    ;;
+  5)
+    clear
+    sleep 5
+    cd
+echo -e "${yellow}========================"
+echo -e "${red} Sedang Menginstall Tools!!!"
+echo -e "${yellow}========================"
+    git clone https://github.com/Reyvknd/Spam-Pairing-Code.git
+    cd Spam-Pairing-Code
+    yarn install
+    npm start
+    ;;
+  6)
+    clear
+    sleep 6
+    cd
+echo -e "${yellow}========================"
+echo -e "${red} Sedang Menginstall Tools!!!"
+echo -e "${yellow}========================"
+     git clone https://github.com/HengkerV78/SpamV78.git
+    cd SpamV78
+    npm install
+    yarn install
+    npm start
+    ;;
+  7)
+    clear
+    sleep 7
+    cd
+echo -e "${yellow}========================"
+echo -e "${red} Sedang Menginstall Tools!!!"
+echo -e "${yellow}========================"
+    pip install colorama
+    pip2 install colorama
+    pip install requests
+    pip2 install requests
+    pip install phonenumbers
+    pip2 install phonenumbers
+    pip install datetime
+    pip2 install datetime
+    pip3 install --upgrade instaloader
+    pip install requests
+    pip install urllib
+    pip install colorama
+    pip install instaloader
+    pip install datetime
+    pip install phonenumbers as pnumb
+    pip install parse
+    pip install  geocoder
+    pip install carrier
+    pip install  timezone
+    pip install instaloader
+    git clone https://github.com/HengkerV78/OsintV2.git 
+    cd OsintV2
+   python osint.py
+    ;;
+  8)
+    clear 
+    sleep 8
+    cd
+echo -e "${yellow}========================="
+echo -e "${red} Sedang Menginstall Tools!!!"
+echo -e "${yellow}========================="
+    git clone https://github.com/HunxByts/GhostTrack.git
+    cd GhostTrack
+    pip3 install -r requirements.txt
+    python3 GhostTR.py
+    ;;
+  9)
+    clear 
+    sleep 9
+    cd
+echo -e "${yellow}========================="
+echo -e "${red} Sedang Menginstall Tools!!!"
+echo -e "${yellow}========================="
+    git clone --depth=1 https://github.com/htr-tech/zphisher.git
+
+    cd zphisher
+
+    bash zphisher.sh
+    ;;
+ 10)
+   clear 
+   sleep 10
+   cd 
+echo -e "${yellow}========================"
+echo -e "${red} Sedang Menginstall Tools!!!"
+echo -e "$yellow}========================="
+   pkg install golang
+   pkg install git 
+   git clone https://github.com/Mr-Pstar7/NIK-checker
+   cd NIK-checker
+   go build
+   chmod +x *
+   ./ktp-checker
+    ;;
+ 11)
+    clear
+    sleep 11
+    cd
+echo -e "${yellow}========================"
+echo -e "${red} Sedang Menginstall Tools!!!"
+echo -e"${red}==========================="
+    pkg install php
+    git clone https://github.com/Inject-ID/tiktok-followers
+    cd tiktok-followers
+    php bot.php
+    ;;
+  12)
+    clear
+    sleep 12
+    cd
+echo -e "${yellow}========================"
+echo -e "${cyan} Sedang Menginstall Tools!!!"
+echo -e "${yellow}========================"
+    git clone https://github.com/HengkerV78/Hack-Wa.git 
+   cd Hack-Wa
+   python hack_wa.py
+    ;;
+  13)
+    clear
+    sleep 13
+    cd
+echo -e "${yellow}============================"
+echo -e "${cyan} Sedang Menginstall Tools!!!"
+echo -e "${yellow}============================"
+    git clone https://github.com/Makky2693/Lacak-IP
+    cd Lacak-IP
+    python2 Lacak-IP.py
+    ;;
+  14)
+    clear
+    sleep 14
+    cd
+echo -e "${yellow}============================="
+echo -e "${cyan} Sedang Menginstall Tools!!!"
+echo -e "${yellow}============================="
+   git clone https://github.com/Ignitetch/AdvPhishing.git
+   cd AdvPhishing/
+   chmod 777 *
+   ./Android-Setup.sh
+   ./AdvPhishing.sh
+    ;;
+  15)
+    clear
+    sleep 15
+    cd
+echo -e "${yellow}=================================="
+echo -e "${cyan} Sedang Menginstall Tools!!!"
+echo -e "${yellow}=================================="
+    git clone https://github.com/Projeckerror/Tampilan.git
+    cdTampilan
+    python Tampilan.py
+     ;;
+   16)
+     clear
+     sleep 16
+     cd
+echo -e "${yellow}================================"
+echo -e "${cyan} Sedang Menginstall Tools!!!"
+echo -e "${yellow}================================"
+    git clone https://github.com/HengkerV78/All-Osint.git 
+    cd All-Osint
+    bash tes.sh
+     ;;
+    17)
+      clear
+      sleep 17
+      cd
+echo -e "${yellow}================================="
+echo -e "${cyan} Sedang Menginstall Tools!!!"
+echo -e "${yellow}================================="
+    pip install requests
+    pip install pyfiglet
+    pip install uuid
+    pip install fake-useragent
+    git clone https://github.com/HengkerV78/King-Osint.git 
+    cd King-Osint
+    python main.py
+     ;;
+   18)
+     clear
+     sleep 19
+     cd
+echo -e "${yellow}=================================="
+echo -e "${cyan} Sedang Menginstall Tools!!!"
+echo -e "${yellow}=================================="
+     git clone https://github.com/Sxp-ID/Brutal-W4
+     cd Brutal-W4
+     make install
+    ./main
+     ;;
+   19)
+    clear 
+    sleep 20
+    cd
+echo -e "${yellow}=================================="
+echo -e "${cyan} Sedang Menginstall Tools!!!"
+echo -e "${yellow}=================================="
+    pkg install libwebp -y
+    pkg install nodejs -y
+    pkg install ffmpeg -y
+    pkg install wget -y
+   pkg install imagemagick -y
+   pkg install npm -y
+   pkg install yarn -y
+   git clone https://github.com/HengkerV78/SpamExon.git
+   cd SpamExon
+  yarn install
+  npm start
+     ;;
+  20)
+    clear
+    sleep 20
+    cd
+echo -e "${yellow}==================================="
+echo -e "${cyan} Sedang Menginstall Tools!!!"
+echo -e "${yellow}==================================="
+   git clone https://github.com/HengkerV78/Sadap-Wa.git 
+  cd Sadap-Wa
+  python Sadap.py
+   ;;
+
+
+  *)
+    echo -e "${red} Menu Tidak Ada Di Toolsv7!!!"
+    ;;
+esac
