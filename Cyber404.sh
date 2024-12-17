@@ -8,6 +8,7 @@ cyan='\033[36;1m'
 red='\033[31;1m'
 white='\033[37;1m'
 yellow='\033[33;1m'
+orange='\033[31;1m'
 
 # Persiapan
 clear
@@ -32,9 +33,12 @@ echo -e "${red}
        ⡇                                          
        ⠿                      
 "
-echo -e "${purple}======================================"
-echo -e "${red}       ™Mode,in By.Thonxyzz404™"
-echo -e "${purple}======================================"
+echo -e "${purple}=========================================="
+echo -e "${yellow}◉${cyan} Authorr=™By.Thonxyzz404™"
+echo -e "${orange}◉${cyan} IP Address Kamu=$(curl -s ifconfig.me)"$IP" "
+echo -e "${blue}◉${cyan} Github=https://github.com/HengkerV78"
+echo -e "${green}◉${cyan} Rilis 17 Desember 2024"
+echo -e "${purple}=========================================="
 echo -e "${blue}➣ ${green}[01]◉ SPAM PAIRV1${blue}"
 echo -e "${blue}➣ ${green}[02]◉ SPAM PAIRV2${blue}"
 echo -e "${blue}➣ ${green}[03]◉ SPAM PAIRV3${blue}"
@@ -46,10 +50,15 @@ echo -e "${yellow}➣ ${yellow}[08]◉ OSINT-TRACK${blue}"
 echo -e "${yellow}➣ ${yellow}[09]◉ ZPHISHER${blue}"
 echo -e "${yellow}➣ ${yellow}[10]◉ OSINT-NIK${blue}"
 echo -e "${green}➣ ${cyan}[11]◉ Followers${blue}"
-echo -e "${green}➣ ${cyan}[12]◉ All-OSINT${blue}"
+echo -e "${green}➣ ${cyan}[12]◉ Hack-Wa${blue}"
 echo -e "${green}➣ ${cyan}[13]◉ IP-TRACKER${blue}"
 echo -e "${green}➣ ${cyan}[14]◉ King-Pshing${blue}"
 echo -e "${green}➣ ${cyan}[15]◉ Termux-Temaa${blue}"
+echo -e "${cyan}➣ ${orange}[16]◉ All-OSINT${blue}"
+echo -e "${cyan}➣ ${orange}[17]◉ King-Osint${blue}"
+echo -e "${cyan}➣ ${orange}[18]◉ SpamV7${blue}"
+echo -e "${cyan}➣ ${orange}[19]◉ SpamV8${blue}"
+echo -e "${cyan}➣ ${orange}[20]◉ Sadap-Wa${blue}"
 echo -e "${purple}======================================"
 echo -e "${red} Silahkan Pilihlah Menu TOOLSV7 [ 😈🔥]"
 echo -e "${purple}======================================"
@@ -116,8 +125,7 @@ echo -e "${yellow}======================="
 echo -e "${yellow}========================"
 echo -e "${red} Sedang Menginstall Tools!!!"
 echo -e "${yellow}========================"
-    git clone
-    https://github.com/Reyvknd/Spam-Pairing-Code.git
+    git clone https://github.com/Reyvknd/Spam-Pairing-Code.git
     cd Spam-Pairing-Code
     yarn install
     npm start
@@ -129,7 +137,7 @@ echo -e "${yellow}========================"
 echo -e "${yellow}========================"
 echo -e "${red} Sedang Menginstall Tools!!!"
 echo -e "${yellow}========================"
-    git clone https://github.com/HengkerV78/SpamV78.git
+     git clone https://github.com/HengkerV78/SpamV78.git
     cd SpamV78
     npm install
     yarn install
@@ -162,9 +170,9 @@ echo -e "${yellow}========================"
     pip install carrier
     pip install  timezone
     pip install instaloader
-    git clone https://github.com/IccTeam/Owl-sint.git
-    cd Owl-sint
-    python owlsint.py
+    git clone https://github.com/HengkerV78/OsintV2.git 
+    cd OsintV2
+   python osint.py
     ;;
   8)
     clear 
@@ -173,13 +181,10 @@ echo -e "${yellow}========================"
 echo -e "${yellow}========================="
 echo -e "${red} Sedang Menginstall Tools!!!"
 echo -e "${yellow}========================="
-    pip install requests
-    pip install pyfiglet
-    pip install uuid
-    pip install fake-useragent
-    git clone https://github.com/HengkerV78/King-Osint.git 
-    cd King-Osint
-    python main.py
+    git clone https://github.com/HunxByts/GhostTrack.git
+    cd GhostTrack
+    pip3 install -r requirements.txt
+    python3 GhostTR.py
     ;;
   9)
     clear 
@@ -188,9 +193,10 @@ echo -e "${yellow}========================="
 echo -e "${yellow}========================="
 echo -e "${red} Sedang Menginstall Tools!!!"
 echo -e "${yellow}========================="
-    git clone --depth=1
-    https://github.com/htr-tech/zphisher.git
+    git clone --depth=1 https://github.com/htr-tech/zphisher.git
+
     cd zphisher
+
     bash zphisher.sh
     ;;
  10)
@@ -227,9 +233,9 @@ echo -e"${red}==========================="
 echo -e "${yellow}========================"
 echo -e "${cyan} Sedang Menginstall Tools!!!"
 echo -e "${yellow}========================"
-    git clone https://github.com/HengkerV78/All-Osint.git 
-    cd All-Osint
-    bash tes.sh
+    git clone https://github.com/HengkerV78/Hack-Wa.git 
+   cd Hack-Wa
+   python hack_wa.py
     ;;
   13)
     clear
@@ -265,7 +271,75 @@ echo -e "${yellow}=================================="
     git clone https://github.com/Projeckerror/Tampilan.git
     cdTampilan
     python Tampilan.py
-    ;;
+     ;;
+   16)
+     clear
+     sleep 16
+     cd
+echo -e "${yellow}================================"
+echo -e "${cyan} Sedang Menginstall Tools!!!"
+echo -e "${yellow}================================"
+    git clone https://github.com/HengkerV78/All-Osint.git 
+    cd All-Osint
+    bash tes.sh
+     ;;
+    17)
+      clear
+      sleep 17
+      cd
+echo -e "${yellow}================================="
+echo -e "${cyan} Sedang Menginstall Tools!!!"
+echo -e "${yellow}================================="
+    pip install requests
+    pip install pyfiglet
+    pip install uuid
+    pip install fake-useragent
+    git clone https://github.com/HengkerV78/King-Osint.git 
+    cd King-Osint
+    python main.py
+     ;;
+   18)
+     clear
+     sleep 19
+     cd
+echo -e "${yellow}=================================="
+echo -e "${cyan} Sedang Menginstall Tools!!!"
+echo -e "${yellow}=================================="
+     git clone https://github.com/Sxp-ID/Brutal-W4
+     cd Brutal-W4
+     make install
+    ./main
+     ;;
+   19)
+    clear 
+    sleep 20
+    cd
+echo -e "${yellow}=================================="
+echo -e "${cyan} Sedang Menginstall Tools!!!"
+echo -e "${yellow}=================================="
+    pkg install libwebp -y
+    pkg install nodejs -y
+    pkg install ffmpeg -y
+    pkg install wget -y
+   pkg install imagemagick -y
+   pkg install npm -y
+   pkg install yarn -y
+   git clone https://github.com/HengkerV78/SpamExon.git
+   cd SpamExon
+  yarn install
+  npm start
+     ;;
+  20)
+    clear
+    sleep 20
+    cd
+echo -e "${yellow}==================================="
+echo -e "${cyan} Sedang Menginstall Tools!!!"
+echo -e "${yellow}==================================="
+   git clone https://github.com/HengkerV78/Sadap-Wa.git 
+  cd Sadap-Wa
+  python Sadap.py
+   ;;
 
 
   *)
